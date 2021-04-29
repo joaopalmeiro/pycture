@@ -29,5 +29,29 @@ This CLI was created with [Cookiecutter](https://github.com/audreyr/cookiecutter
 - [OpenMoji](https://openmoji.org/).
 - [emoji](https://github.com/carpedm20/emoji) package.
 - [Twemoji](https://github.com/twitter/twemoji).
+- [Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html).
 - [cookiecutter-poetry](https://github.com/johanvergeer/cookiecutter-poetry) (only the `pyproject.toml` file and no `poetry.lock` file).
 - `cli.py` or `console.py`.
+- [Asyncio integration](https://github.com/pallets/click/issues/85) issue (Click).
+- [asyncclick](https://github.com/python-trio/asyncclick) package (fork of Click).
+- [aiohttp](https://github.com/aio-libs/aiohttp) package (vs. [Requests](https://github.com/psf/requests)):
+  - "(...) you can picture the session object as a user starting and closing a browser: it wouldn't make sense to do that every time you want to load a new tab." ([source](https://docs.aiohttp.org/en/stable/http_request_lifecycle.html))
+
+```python
+# aiohttp
+async with aiohttp.ClientSession() as session:
+    async with session.get("http://python.org") as response:
+        print(await response.text())
+
+# vs.
+
+# Requests
+response = requests.get("http://python.org")
+print(response.text)
+
+# or
+
+with requests.Session() as session:
+    response = session.get("http://python.org")
+    print(response.text)
+```
