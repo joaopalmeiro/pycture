@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "pycture"
+version = "0.0.1"
+description = "A Python CLI for obtaining emojis as files and favicons."
+authors = ["João Palmeiro <joaommpalmeiro@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/joaopalmeiro/pycture"
+repository = "https://github.com/joaopalmeiro/pycture"
+keywords = ["pycture", "cli"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Terminals",
+    "Topic :: Utilities"
+]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/joaopalmeiro/pycture/issues"
+"Twitter" = "https://twitter.com/joaompalmeiro"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+importlib-metadata = {version = "^1.0", python = "<3.8"}
+click = "^7.1.2"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.812"
+isort = "^5.7.0"
+black = "^20.8b1"
+flake8 = "^3.8.4"
+bandit = "^1.7.0"
+flake8-bugbear = "^21.3.1"
+flake8-comprehensions = "^3.3.1"
+pep8-naming = "^0.11.1"
+flake8-builtins = "^1.5.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+pycture = "pycture.cli:main"
