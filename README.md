@@ -32,6 +32,7 @@ This CLI was created with [Cookiecutter](https://github.com/audreyr/cookiecutter
 - [emoji](https://github.com/carpedm20/emoji) package.
 - [demoji](https://github.com/bsolomon1124/demoji) package.
 - [Twemoji](https://github.com/twitter/twemoji).
+- [Inflection](https://inflection.readthedocs.io/en/latest/) package.
 - Unicode:
   - [Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html).
   - [Full Emoji Modifier Sequences](http://www.unicode.org/emoji/charts/full-emoji-modifiers.html).

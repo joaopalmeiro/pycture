@@ -12,19 +12,21 @@ from defusedxml.minidom import parseString
 
 from . import __version__
 from .constants import NAMESPACE_URI, PRETTY_HELP, TWEMOJI_URL
+from .utils import emoji_name_to_filename
 
 
 # More info:
 # - https://click.palletsprojects.com/en/7.x/options/#boolean-flags
 @click.command()
+@click.argument("emoji", type=str)
 @click.option("--pretty", is_flag=True, help=PRETTY_HELP)
 @click.version_option(version=__version__)
-def main(pretty):
-    """Get emojis as files and favicons."""
+def main(emoji: str, pretty: bool) -> None:
+    """Get EMOJI as a file or favicon via its CLDR short name."""
     # More info:
     # - https://docs.python.org/3/library/string.html#format-specification-mini-language
-    emoji = unicodedata.lookup("BAR CHART")
-    code = f"{ord(emoji):x}"
+    emoji_symbol = unicodedata.lookup(emoji.upper())
+    code = f"{ord(emoji_symbol):x}"
 
     response = requests.get(TWEMOJI_URL.format(code=code))
 
@@ -37,6 +39,7 @@ def main(pretty):
     svg_string = parseString(response.text).toprettyxml() if pretty else response.text
     tree = ElementTree(fromstring(svg_string))
 
-    with open("test.svg", "w") as f:
+    filename = emoji_name_to_filename(emoji)
+    with open(filename, "w") as f:
         # Source: https://stackoverflow.com/a/37713268
         tree.write(f, encoding="unicode", method="xml")
