@@ -1,8 +1,13 @@
-import xml.etree.ElementTree as ET
-from xml.dom.minidom import parseString
+from xml.etree.ElementTree import ElementTree, register_namespace  # nosec
 
 import click
 import requests
+
+# import xml.etree.ElementTree as ET
+from defusedxml.ElementTree import fromstring
+
+# from xml.dom.minidom import parseString
+from defusedxml.minidom import parseString
 
 from . import __version__
 from .constants import NAMESPACE_URI, PRETTY_HELP, TWEMOJI_URL
@@ -18,13 +23,13 @@ def main(pretty):
     response = requests.get(TWEMOJI_URL.format(code="1f948"))
 
     # click.echo(response.headers)
-    # lick.echo(response.text)
+    # click.echo(response.text)
 
-    ET.register_namespace("", NAMESPACE_URI)
+    register_namespace("", NAMESPACE_URI)
 
     # Source: https://stackoverflow.com/a/17402424
     svg_string = parseString(response.text).toprettyxml() if pretty else response.text
-    tree = ET.ElementTree(ET.fromstring(svg_string))
+    tree = ElementTree(fromstring(svg_string))
 
     with open("test.svg", "w") as f:
         # Source: https://stackoverflow.com/a/37713268

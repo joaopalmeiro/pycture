@@ -29,6 +29,7 @@ python = "^3.6"
 importlib-metadata = {version = "^1.0", python = "<3.8"}
 click = "^7.1.2"
 requests = "^2.25.1"
+defusedxml = "^0.7.1"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.812"

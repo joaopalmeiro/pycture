@@ -9,6 +9,7 @@ A Python CLI for obtaining emojis as files and favicons.
 
 - [Click](https://click.palletsprojects.com/) (for the interface)
 - [Requests](https://github.com/psf/requests) (for HTTP requests)
+- [defusedxml](https://github.com/tiran/defusedxml) (for parsing XML/SVG data)
 
 ### Packaging and Development
 
@@ -39,6 +40,12 @@ This CLI was created with [Cookiecutter](https://github.com/audreyr/cookiecutter
 - `cli.py` or `console.py`.
 - [Asyncio integration](https://github.com/pallets/click/issues/85) issue (Click).
 - [asyncclick](https://github.com/python-trio/asyncclick) package (fork of Click).
+- [XML vulnerabilities](https://docs.python.org/3/library/xml.html#xml-vulnerabilities).
+- Bandit:
+  - [B405 complains about any xml.etree.ElementTree import, not just parse-related ones](https://github.com/PyCQA/bandit/issues/709) (open) issue.
+  - [from xml.etree.ElementTree import Element Flagged](https://github.com/PyCQA/bandit/issues/602) (open) issue.
+  - [Error message refers to "defusedxml.defuse_stdlib()" but calling that does not silence bandit](https://github.com/PyCQA/bandit/issues/708) (open) issue.
+  - [defusedxml](https://github.com/tiran/defusedxml) provides alternatives for parsing-related functions.
 - [aiohttp](https://github.com/aio-libs/aiohttp) package (vs. [Requests](https://github.com/psf/requests)):
   - "(...) you can picture the session object as a user starting and closing a browser: it wouldn't make sense to do that every time you want to load a new tab." ([source](https://docs.aiohttp.org/en/stable/http_request_lifecycle.html))
 
