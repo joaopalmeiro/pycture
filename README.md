@@ -8,6 +8,7 @@ A Python CLI for obtaining emojis as files and favicons.
 ## Tech Stack
 
 - [Click](https://click.palletsprojects.com/) (for the interface)
+- [Requests](https://github.com/psf/requests) (for HTTP requests)
 
 ### Packaging and Development
 
