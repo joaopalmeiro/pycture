@@ -1,3 +1,4 @@
+import unicodedata
 from xml.etree.ElementTree import ElementTree, register_namespace  # nosec
 
 import click
@@ -20,7 +21,12 @@ from .constants import NAMESPACE_URI, PRETTY_HELP, TWEMOJI_URL
 @click.version_option(version=__version__)
 def main(pretty):
     """Get emojis as files and favicons."""
-    response = requests.get(TWEMOJI_URL.format(code="1f948"))
+    # More info:
+    # - https://docs.python.org/3/library/string.html#format-specification-mini-language
+    emoji = unicodedata.lookup("BAR CHART")
+    code = f"{ord(emoji):x}"
+
+    response = requests.get(TWEMOJI_URL.format(code=code))
 
     # click.echo(response.headers)
     # click.echo(response.text)

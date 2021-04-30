@@ -30,12 +30,14 @@ This CLI was created with [Cookiecutter](https://github.com/audreyr/cookiecutter
 
 - [OpenMoji](https://openmoji.org/).
 - [emoji](https://github.com/carpedm20/emoji) package.
+- [demoji](https://github.com/bsolomon1124/demoji) package.
 - [Twemoji](https://github.com/twitter/twemoji).
 - Unicode:
   - [Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html).
   - [Full Emoji Modifier Sequences](http://www.unicode.org/emoji/charts/full-emoji-modifiers.html).
   - [Emoji Counts](http://www.unicode.org/emoji/charts/emoji-counts.html).
   - [Emoji List, v13.0](https://unicode.org/emoji/charts-13.0/emoji-list.html).
+  - [unicodedata](https://docs.python.org/3.6/library/unicodedata.html) (Python 3.6 -> Unicode 9.0).
 - [cookiecutter-poetry](https://github.com/johanvergeer/cookiecutter-poetry) (only the `pyproject.toml` file and no `poetry.lock` file).
 - `cli.py` or `console.py`.
 - [Asyncio integration](https://github.com/pallets/click/issues/85) issue (Click).
