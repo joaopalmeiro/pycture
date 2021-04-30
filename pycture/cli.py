@@ -1,4 +1,5 @@
 import unicodedata
+from pathlib import Path
 from xml.etree.ElementTree import ElementTree, register_namespace  # nosec
 
 import click
@@ -11,7 +12,7 @@ from defusedxml.ElementTree import fromstring
 from defusedxml.minidom import parseString
 
 from . import __version__
-from .constants import NAMESPACE_URI, PRETTY_HELP, TWEMOJI_URL
+from .constants import NAMESPACE_URI, OUTPUT_DIR_HELP, PRETTY_HELP, TWEMOJI_URL
 from .utils import emoji_name_to_filename
 
 
@@ -19,9 +20,18 @@ from .utils import emoji_name_to_filename
 # - https://click.palletsprojects.com/en/7.x/options/#boolean-flags
 @click.command()
 @click.argument("emoji", type=str)
-@click.option("--pretty", is_flag=True, help=PRETTY_HELP)
+@click.option(
+    "-o",
+    "--output-dir",
+    type=click.Path(exists=True, file_okay=False, dir_okay=True),
+    help=OUTPUT_DIR_HELP,
+    default=".",
+    # show_default=True,
+    show_default="current directory",
+)
+@click.option("-p", "--pretty", is_flag=True, help=PRETTY_HELP)
 @click.version_option(version=__version__)
-def main(emoji: str, pretty: bool) -> None:
+def main(emoji: str, output_dir: str, pretty: bool) -> None:
     """Get EMOJI as a file or favicon via its CLDR short name."""
     # More info:
     # - https://docs.python.org/3/library/string.html#format-specification-mini-language
@@ -40,6 +50,10 @@ def main(emoji: str, pretty: bool) -> None:
     tree = ElementTree(fromstring(svg_string))
 
     filename = emoji_name_to_filename(emoji)
-    with open(filename, "w") as f:
+    output_path = Path(output_dir) / filename
+
+    with open(output_path, "w") as f:
         # Source: https://stackoverflow.com/a/37713268
         tree.write(f, encoding="unicode", method="xml")
+
+    click.secho("\n✨ Done!", bold=True)

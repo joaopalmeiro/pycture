@@ -7,4 +7,5 @@ TWEMOJI_URL: str = (
 NAMESPACE_URI: str = "http://www.w3.org/2000/svg"
 
 # CLI
+OUTPUT_DIR_HELP: str = "The path to the output directory."
 PRETTY_HELP: str = "Pretty-print the SVG code."

@@ -131,3 +131,4 @@ dmypy.json
 # pycture
 formatter.py
 *.svg
+test_svg/
