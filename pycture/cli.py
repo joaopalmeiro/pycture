@@ -32,7 +32,10 @@ from .utils import emoji_name_to_filename
 @click.option("-p", "--pretty", is_flag=True, help=PRETTY_HELP)
 @click.version_option(version=__version__)
 def main(emoji: str, output_dir: str, pretty: bool) -> None:
-    """Get EMOJI as a file or favicon via its CLDR short name."""
+    """Get EMOJI as a file or favicon via its CLDR short name.
+
+    Use Unicode 9.0 and Emoji 3.0 as a reference.
+    """
     # More info:
     # - https://docs.python.org/3/library/string.html#format-specification-mini-language
     emoji_symbol = unicodedata.lookup(emoji.upper())
