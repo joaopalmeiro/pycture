@@ -12,7 +12,15 @@ from defusedxml.ElementTree import fromstring
 from defusedxml.minidom import parseString
 
 from . import __version__
-from .constants import NAMESPACE_URI, OUTPUT_DIR_HELP, PRETTY_HELP, TWEMOJI_URL
+from .constants import (
+    CODE_CASES,
+    NAMESPACE_URI,
+    OUTPUT_DIR_HELP,
+    PRETTY_HELP,
+    SOURCE_HELP,
+    SOURCES,
+    URLS,
+)
 from .utils import emoji_name_to_filename
 
 
@@ -30,8 +38,15 @@ from .utils import emoji_name_to_filename
     show_default="current directory",
 )
 @click.option("-p", "--pretty", is_flag=True, help=PRETTY_HELP)
+@click.option(
+    "-s",
+    "--source",
+    type=click.Choice(SOURCES, case_sensitive=False),
+    default=SOURCES[0],
+    help=SOURCE_HELP,
+)
 @click.version_option(version=__version__)
-def main(emoji: str, output_dir: str, pretty: bool) -> None:
+def main(emoji: str, output_dir: str, pretty: bool, source: str) -> None:
     """Get EMOJI as a file or favicon via its CLDR short name.
 
     Use Unicode 9.0 and Emoji 3.0 as a reference.
@@ -40,8 +55,12 @@ def main(emoji: str, output_dir: str, pretty: bool) -> None:
     # - https://docs.python.org/3/library/string.html#format-specification-mini-language
     emoji_symbol = unicodedata.lookup(emoji.upper())
     code = f"{ord(emoji_symbol):x}"
+    code = CODE_CASES[source](code)
 
-    response = requests.get(TWEMOJI_URL.format(code=code))
+    url = URLS[source].format(code=code)
+    click.echo(f"\n🌐 {click.style('Source', bold=True)}: {url}")
+
+    response = requests.get(url)
 
     # click.echo(response.headers)
     # click.echo(response.text)
@@ -52,7 +71,7 @@ def main(emoji: str, output_dir: str, pretty: bool) -> None:
     svg_string = parseString(response.text).toprettyxml() if pretty else response.text
     tree = ElementTree(fromstring(svg_string))
 
-    filename = emoji_name_to_filename(emoji)
+    filename = emoji_name_to_filename(emoji, source)
     output_path = Path(output_dir) / filename
 
     with open(output_path, "w") as f:
