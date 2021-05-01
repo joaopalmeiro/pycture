@@ -48,6 +48,11 @@ Options:
 
 This CLI was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [`joaopalmeiro/cookiecutter-templates/python-cli`](https://github.com/joaopalmeiro/cookiecutter-templates) project template.
 
+## Development
+
+1. `poetry install`
+2. `poetry shell`
+
 ## Notes
 
 - [click-contrib](https://github.com/click-contrib) (a collection of third-party extensions).
