@@ -1,4 +1,4 @@
-.PHONY: all check type isort black lint bandit
+.PHONY: all check type isort black lint bandit quickstart
 
 CMD:=poetry run
 PYMODULE:=pycture
@@ -22,3 +22,6 @@ lint:
 
 bandit:
 	$(CMD) bandit -r $(PYMODULE)
+
+quickstart:
+	$(CMD) $(PYMODULE) --help | pbcopy

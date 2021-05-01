@@ -5,6 +5,28 @@
 
 A Python CLI for obtaining emojis as files and favicons.
 
+## Quickstart
+
+```sh
+Usage: pycture [OPTIONS] EMOJI
+
+  Get EMOJI as a file or favicon via its CLDR short name.
+
+  Use Unicode 9.0 and Emoji 3.0 as a reference.
+
+Options:
+  -o, --output-dir DIRECTORY      The path to the output directory.  [default:
+                                  (current directory)]
+
+  -p, --pretty                    Pretty-print the SVG code.
+  -s, --source [Twemoji|OpenMoji]
+                                  The source of the emoji to obtain.
+                                  [default: Twemoji]
+
+  --version                       Show the version and exit.
+  --help                          Show this message and exit.
+```
+
 ## Tech Stack
 
 - [Click](https://click.palletsprojects.com/) (for the interface)
@@ -56,7 +78,7 @@ This CLI was created with [Cookiecutter](https://github.com/audreyr/cookiecutter
   - [Error message refers to "defusedxml.defuse_stdlib()" but calling that does not silence bandit](https://github.com/PyCQA/bandit/issues/708) (open) issue.
   - [defusedxml](https://github.com/tiran/defusedxml) provides alternatives for parsing-related functions.
 - [Shell completion](https://click.palletsprojects.com/en/7.x/bashcomplete/) (for commands, options, and choice values):
-  - Generate the [activation script](https://click.palletsprojects.com/en/7.x/bashcomplete/#activation-script)): `_PYCTURE_COMPLETE=source_zsh pycture > pycture-complete.sh`.
+  - Generate the [activation script](https://click.palletsprojects.com/en/7.x/bashcomplete/#activation-script): `_PYCTURE_COMPLETE=source_zsh pycture > pycture-complete.sh`.
 - [aiohttp](https://github.com/aio-libs/aiohttp) package (vs. [Requests](https://github.com/psf/requests)):
   - "(...) you can picture the session object as a user starting and closing a browser: it wouldn't make sense to do that every time you want to load a new tab." ([source](https://docs.aiohttp.org/en/stable/http_request_lifecycle.html))
 
