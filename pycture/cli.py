@@ -43,6 +43,7 @@ from .utils import emoji_name_to_filename, unprettify
     "--source",
     type=click.Choice(SOURCES, case_sensitive=False),
     default=SOURCES[0],
+    show_default=True,
     help=SOURCE_HELP,
 )
 @click.version_option(version=__version__)

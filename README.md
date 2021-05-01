@@ -28,6 +28,11 @@ This CLI was created with [Cookiecutter](https://github.com/audreyr/cookiecutter
 
 ## Notes
 
+- [click-contrib](https://github.com/click-contrib) (a collection of third-party extensions).
+  - [click-man](https://github.com/click-contrib/click-man) package (man pages).
+  - [click-help-colors](https://github.com/click-contrib/click-help-colors) package.
+  - [click-didyoumean](https://github.com/click-contrib/click-didyoumean) package.
+  - [click_params](https://github.com/click-contrib/click_params) package (extra types).
 - [OpenMoji](https://openmoji.org/).
 - [emoji](https://github.com/carpedm20/emoji) package.
 - [demoji](https://github.com/bsolomon1124/demoji) package.
@@ -50,6 +55,8 @@ This CLI was created with [Cookiecutter](https://github.com/audreyr/cookiecutter
   - [from xml.etree.ElementTree import Element Flagged](https://github.com/PyCQA/bandit/issues/602) (open) issue.
   - [Error message refers to "defusedxml.defuse_stdlib()" but calling that does not silence bandit](https://github.com/PyCQA/bandit/issues/708) (open) issue.
   - [defusedxml](https://github.com/tiran/defusedxml) provides alternatives for parsing-related functions.
+- [Shell completion](https://click.palletsprojects.com/en/7.x/bashcomplete/) (for commands, options, and choice values):
+  - Generate the [activation script](https://click.palletsprojects.com/en/7.x/bashcomplete/#activation-script)): `_PYCTURE_COMPLETE=source_zsh pycture > pycture-complete.sh`.
 - [aiohttp](https://github.com/aio-libs/aiohttp) package (vs. [Requests](https://github.com/psf/requests)):
   - "(...) you can picture the session object as a user starting and closing a browser: it wouldn't make sense to do that every time you want to load a new tab." ([source](https://docs.aiohttp.org/en/stable/http_request_lifecycle.html))
 
