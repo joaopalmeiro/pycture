@@ -7,7 +7,7 @@ A Python CLI for obtaining emojis as files and favicons.
 
 ## Quickstart
 
-```sh
+```text
 Usage: pycture [OPTIONS] EMOJI
 
   Get EMOJI as a file or favicon via its CLDR short name.
