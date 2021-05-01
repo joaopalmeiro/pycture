@@ -19,6 +19,7 @@ classifiers = [
     "Topic :: Terminals",
     "Topic :: Utilities"
 ]
+include = ["pycture-complete.sh"]
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/joaopalmeiro/pycture/issues"

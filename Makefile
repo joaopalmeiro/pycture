@@ -1,4 +1,4 @@
-.PHONY: all check type isort black lint bandit quickstart
+.PHONY: all check type isort black lint bandit quickstart clean
 
 CMD:=poetry run
 PYMODULE:=pycture
@@ -25,3 +25,8 @@ bandit:
 
 quickstart:
 	$(CMD) $(PYMODULE) --help | pbcopy
+
+clean:
+	rm -rf dist/
+	find . -name "*.svg" -type f -delete
+	rm -rf ./test_svg/*
