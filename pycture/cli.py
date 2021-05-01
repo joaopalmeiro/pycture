@@ -21,7 +21,7 @@ from .constants import (
     SOURCES,
     URLS,
 )
-from .utils import emoji_name_to_filename
+from .utils import emoji_name_to_filename, unprettify
 
 
 # More info:
@@ -67,8 +67,10 @@ def main(emoji: str, output_dir: str, pretty: bool, source: str) -> None:
 
     register_namespace("", NAMESPACE_URI)
 
+    svg_code = unprettify(response.text)
+
     # Source: https://stackoverflow.com/a/17402424
-    svg_string = parseString(response.text).toprettyxml() if pretty else response.text
+    svg_string = parseString(svg_code).toprettyxml() if pretty else svg_code
     tree = ElementTree(fromstring(svg_string))
 
     filename = emoji_name_to_filename(emoji, source)
