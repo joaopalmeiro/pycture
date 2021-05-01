@@ -15,8 +15,8 @@ Usage: pycture [OPTIONS] EMOJI
   Use Unicode 9.0 and Emoji 3.0 as a reference.
 
 Options:
-  -o, --output-dir DIRECTORY      The path to the output directory.  [default:
-                                  (current directory)]
+  -o, --output-dir DIRECTORY      The path to the output directory.
+                                  [default: (current directory)]
 
   -p, --pretty                    Pretty-print the SVG code.
   -s, --source [Twemoji|OpenMoji]
